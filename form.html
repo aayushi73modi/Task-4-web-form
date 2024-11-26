@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="/form/style.css" rel="stylesheet">
+  <link href="/form/form-validation.js" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <script>
+    function myPassword() {
+      var pass = document.getElementById("myInputPassword");
+      if (pass.type === "password") {
+        pass.type = "text";
+      } else {
+        pass.type = "password";
+      }
+    }
+
+     // Validation Script
+     document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("user-form");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); 
+
+        // Clear all error messages
+        document.querySelectorAll(".error").forEach((error) => (error.textContent = ""));
+        let isValid = true;
+
+        if (isValid) {
+          alert("Form submitted successfully!");
+          form.submit();
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="form-container">
+    <form id="user-form">
+      <h1>Registration Form</h1>
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required />
+      <div class="error" id="firstnameError"></div>
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required/>
+      <div class="error" id="lastnameError"></div>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" placeholder="Enter your address" rows="5" cols="25" required></textarea>
+      <div class="error" id="addressError"></div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email"required />
+      <div class="error" id="emailError"></div>
+
+      <div class="password-container">
+        <label for="password">Password:</label>
+        <input type="password" id="myInputPassword" name="password" placeholder="Enter your password"required />
+        <span id="myInputPassword" class="toggle-visibility" onclick="myPassword()">👁</span>
+        <div class="error" id="passwordError"></div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
